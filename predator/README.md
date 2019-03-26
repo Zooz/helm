@@ -7,7 +7,7 @@
 ## TL;DR;
 
 ```console
-$ helm install stable/predator
+$ helm install predator
 ```
 
 ## Installing the Chart
@@ -15,7 +15,7 @@ $ helm install stable/predator
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm install --name my-release stable/predator
+$ helm install --name my-release predator
 ```
 
 The command deploys predator on the Kubernetes cluster with the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
