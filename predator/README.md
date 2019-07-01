@@ -21,13 +21,6 @@ To install the chart with the release name `my-release`:
 $ helm install --name my-release predator
 ```
 
-To install and connect Predator with a database (MySQL for example) (Please note that username and password are in base64) 
-
-```console
-$ helm install --name my-release predator --set database.type=MYSQL,database.name=predator,database.address=mysql.default,database.password=cGFzc3dvcmQ=,database.username=dXNlcm5hbWU=
-
-```
-
 The command deploys predator on the Kubernetes cluster with the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 ## Uninstalling the Chart
@@ -51,7 +44,7 @@ $ helm install --name my-release predator --set database.type=MYSQL,database.nam
 ```
 > **Note**:
 >
-> Both **database.username** and **database.password** should be provided in **Base64**
+> database.username & database.password should be provided in base 64
 >
 
 The following tables lists the configurable parameters of the Predator chart and their default values.
