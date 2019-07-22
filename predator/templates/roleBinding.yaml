@@ -2,11 +2,11 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: {{ include "predator.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Release.Namespace }}
 subjects:
 - kind: ServiceAccount
   name: {{ include "predator.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
   name: {{ include "predator.fullname" . }}
