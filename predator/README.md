@@ -74,4 +74,5 @@ The following tables lists the configurable parameters of the Predator chart and
 | `database.cassandra.replicationFactor`  | replication factor for cassandra              | `1`                                          |
 | `database.cassandra.keySpaceStrategy`  | key space strategy for cassandra               | `SimpleStrategy`                             |
 | `database.cassandra.localDataCenter`  | local data center for cassandra                                                                |
+| `kubernetesUrl    `  | URL of kubernetes, Predator should be able to communicate with this url. | https://kubernetes.default.svc                                                              |
 
