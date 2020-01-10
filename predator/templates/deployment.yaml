@@ -26,6 +26,7 @@ spec:
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+  {{if ne .Values.database.type "SQLITE"}}
           - name: "DATABASE_USERNAME"
             valueFrom:
               secretKeyRef:
@@ -36,6 +37,7 @@ spec:
               secretKeyRef:
                 key:  DATABASE_PASSWORD
                 name: {{ .Release.Name }}
+  {{end}}
           - name: DATABASE_TYPE
             value: {{ .Values.database.type }}
           - name: DATABASE_NAME

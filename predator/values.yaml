@@ -20,6 +20,17 @@ ingress:
     - predator.local
   tls: []
 
+persistence:
+  enabled: false
+  initChownData: true
+  # storageClassName: default
+  accessModes:
+  - ReadWriteOnce
+  size: 2Gi
+  # annotations: {}
+  # subPath: ""
+  # existingClaim:
+
 nodeSelector: {}
 
 tolerations: []
