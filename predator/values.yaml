@@ -22,13 +22,11 @@ ingress:
 
 persistence:
   enabled: false
-  initChownData: true
   # storageClassName: default
   accessModes:
   - ReadWriteOnce
   size: 2Gi
   # annotations: {}
-  # subPath: ""
   # existingClaim:
 
 nodeSelector: {}
@@ -48,7 +46,7 @@ database:
     keySpaceStrategy: SimpleStrategy
     localDataCenter:
   sqlite:
-    storage: predator
+    storage: /db/predator
 
 internalAddress:
 kubernetesUrl: https://kubernetes.default.svc

@@ -20,6 +20,12 @@ spec:
         app.kubernetes.io/name: {{ include "predator.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      volumes:
+        - name: sqlite
+      {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "predator.fullname" . }}{{- end }}
+      {{ end }}
       serviceAccountName: {{ include "predator.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
@@ -66,6 +72,9 @@ spec:
             value: {{ .Release.Namespace }}
           - name: INTERNAL_ADDRESS
             value: http://{{ include "predator.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/{{ .Values.apiVersion }}
+          volumeMounts:
+            - name: sqlite
+              mountPath: /db
           ports:
             - name: http
               containerPort: 80
@@ -92,3 +101,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+
+
+
+
+
+
+

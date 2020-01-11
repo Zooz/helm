@@ -80,10 +80,8 @@ The following tables lists the configurable parameters of the Predator chart and
 | `database.cassandra.localDataCenter`  | local data center for cassandra                                                                |
 | `kubernetesUrl    `  | URL of kubernetes, Predator should be able to communicate with this url. | https://kubernetes.default.svc                                                              |
 | `persistence.enabled`                     | Use persistent volume to store data           | `false`                                                 |
-| `persistence.initChownData`               | Change ownership of persistent volume on initialization | `true`                                                  |
 | `persistence.size`                        | Size of persistent volume claim               | `2Gi`                                                  |
 | `persistence.existingClaim`               | Use an existing PVC to persist data           | `nil`                                                   |
 | `persistence.storageClassName`            | Type of persistent volume claim               | `nil`                                                   |
 | `persistence.accessModes`                 | Persistence access modes                      | `[ReadWriteOnce]`                                       |
-| `persistence.subPath`                     | Mount a sub dir of the persistent volume      | `nil`                                                   |
 
