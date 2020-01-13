@@ -40,7 +40,7 @@ The command removes all the Kubernetes components associated with the chart and 
 $ helm install --name my-release predator --set persistence.enabled=true
 ```
 
-`Predator` supports other external storage backends like Cassandra, postgresSQL, MySql and SQL Server.
+`Predator` supports other storage engines like Cassandra, postgresSQL, MySql and SQL Server.
 If you want to use any of this database just install with these configuration:
 
 ```console
@@ -84,4 +84,3 @@ The following tables lists the configurable parameters of the Predator chart and
 | `persistence.existingClaim`               | Use an existing PVC to persist data           | `nil`                                                   |
 | `persistence.storageClassName`            | Type of persistent volume claim               | `nil`                                                   |
 | `persistence.accessModes`                 | Persistence access modes                      | `[ReadWriteOnce]`                                       |
-

@@ -3,10 +3,10 @@ kind: Pod
 metadata:
   name: "{{ include "predator.fullname" . }}-test-connection"
   labels:
-    app.kubernetes.io/name: {{ include "predator.name" . }}
-    helm.sh/chart: {{ include "predator.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: {{ template "predator.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
   annotations:
     "helm.sh/hook": test-success
 spec:
