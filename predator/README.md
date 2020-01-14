@@ -35,6 +35,9 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Configuration
 
+By default configuration, `Predator` runs with sqlite as its storage without persistence.
+It is possible to run with persistence with the following configuration:
+
 `Predator` with SQLite persisted storage 
 ```console
 $ helm install --name my-release predator --set persistence.enabled=true
@@ -82,5 +85,5 @@ The following tables lists the configurable parameters of the Predator chart and
 | `persistence.enabled`                     | Use persistent volume to store data           | `false`                                                 |
 | `persistence.size`                        | Size of persistent volume claim               | `2Gi`                                                  |
 | `persistence.existingClaim`               | Use an existing PVC to persist data           | `nil`                                                   |
-| `persistence.storageClassName`            | Type of persistent volume claim               | `nil`                                                   |
+| `persistence.storageClassName`            | Name of StorageClass resource               | `nil`                                                   |
 | `persistence.accessModes`                 | Persistence access modes                      | `[ReadWriteOnce]`                                       |
