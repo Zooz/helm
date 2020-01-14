@@ -4,28 +4,38 @@ metadata:
   name: {{ include "predator.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "predator.name" . }}
-    helm.sh/chart: {{ include "predator.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: {{ template "predator.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "predator.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app: {{ template "predator.fullname" . }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "predator.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app: {{ template "predator.fullname" . }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+        heritage: "{{ .Release.Service }}"
     spec:
+      volumes:
+        - name: sqlite
+      {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "predator.fullname" .) }}
+      {{- else }}
+          emptyDir: {}
+      {{ end }}
       serviceAccountName: {{ include "predator.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+  {{if ne .Values.database.type "SQLITE"}}
           - name: "DATABASE_USERNAME"
             valueFrom:
               secretKeyRef:
@@ -36,6 +46,7 @@ spec:
               secretKeyRef:
                 key:  DATABASE_PASSWORD
                 name: {{ .Release.Name }}
+  {{end}}
           - name: DATABASE_TYPE
             value: {{ .Values.database.type }}
           - name: DATABASE_NAME
@@ -64,6 +75,9 @@ spec:
             value: {{ .Release.Namespace }}
           - name: INTERNAL_ADDRESS
             value: http://{{ include "predator.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/{{ .Values.apiVersion }}
+          volumeMounts:
+            - name: sqlite
+              mountPath: /db
           ports:
             - name: http
               containerPort: 80

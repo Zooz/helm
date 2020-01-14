@@ -20,6 +20,15 @@ ingress:
     - predator.local
   tls: []
 
+persistence:
+  enabled: false
+  # storageClassName: default
+  accessModes:
+  - ReadWriteOnce
+  size: 2Gi
+  # annotations: {}
+  # existingClaim:
+
 nodeSelector: {}
 
 tolerations: []
@@ -37,7 +46,7 @@ database:
     keySpaceStrategy: SimpleStrategy
     localDataCenter:
   sqlite:
-    storage: predator
+    storage: /db/predator
 
 internalAddress:
 kubernetesUrl: https://kubernetes.default.svc

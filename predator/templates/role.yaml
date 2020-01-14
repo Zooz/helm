@@ -1,6 +1,11 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
+  labels:
+    app: {{ template "predator.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
   name: {{ include "predator.fullname" . }}
   namespace: {{ .Release.Namespace }}
 rules:
@@ -9,4 +14,4 @@ rules:
   verbs: ["*"]
 - apiGroups: [""]
   resources: ["pods", "pods/log"]
-  verbs: ["get", "list"]
+  verbs: ["delete", "get", "list"]

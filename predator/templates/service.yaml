@@ -4,10 +4,10 @@ metadata:
   name: {{ include "predator.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "predator.name" . }}
-    helm.sh/chart: {{ include "predator.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: {{ template "predator.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -16,5 +16,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "predator.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    app: {{ template "predator.fullname" . }}

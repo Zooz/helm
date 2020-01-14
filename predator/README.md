@@ -35,8 +35,15 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Configuration
 
-By default `Predator` runs in with sqlite as it's storage, so it doesn't actually persist anything other than in memory.
-`Predator` supports other storage backends like Cassandra, postgresSQL, MySql and SQL Server.
+By default configuration, `Predator` runs with sqlite as its storage without persistence.
+It is possible to run with persistence with the following configuration:
+
+`Predator` with SQLite persisted storage 
+```console
+$ helm install --name my-release predator --set persistence.enabled=true
+```
+
+`Predator` supports other storage engines like Cassandra, postgresSQL, MySql and SQL Server.
 If you want to use any of this database just install with these configuration:
 
 ```console
@@ -75,4 +82,8 @@ The following tables lists the configurable parameters of the Predator chart and
 | `database.cassandra.keySpaceStrategy`  | key space strategy for cassandra               | `SimpleStrategy`                             |
 | `database.cassandra.localDataCenter`  | local data center for cassandra                                                                |
 | `kubernetesUrl    `  | URL of kubernetes, Predator should be able to communicate with this url. | https://kubernetes.default.svc                                                              |
-
+| `persistence.enabled`                     | Use persistent volume to store data           | `false`                                                 |
+| `persistence.size`                        | Size of persistent volume claim               | `2Gi`                                                  |
+| `persistence.existingClaim`               | Use an existing PVC to persist data           | `nil`                                                   |
+| `persistence.storageClassName`            | Name of StorageClass resource               | `nil`                                                   |
+| `persistence.accessModes`                 | Persistence access modes                      | `[ReadWriteOnce]`                                       |
