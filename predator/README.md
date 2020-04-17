@@ -10,15 +10,7 @@ It has a simple, one-click installation, built with support for Kubernetes, DC/O
 ## TL;DR;
 
 ```console
-$ helm install predator
-```
-
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```console
-$ helm install --name my-release predator
+$ helm install my-release zooz/predator
 ```
 
 The command deploys predator on the Kubernetes cluster with the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -40,14 +32,14 @@ It is possible to run with persistence with the following configuration:
 
 `Predator` with SQLite persisted storage 
 ```console
-$ helm install --name my-release predator --set persistence.enabled=true
+$ helm install my-release zooz/predator --set persistence.enabled=true
 ```
 
 `Predator` supports other storage engines like Cassandra, postgresSQL, MySql and SQL Server.
 If you want to use any of this database just install with these configuration:
 
 ```console
-$ helm install --name my-release predator --set database.type=MYSQL,database.name=predator,database.address=mysql.default,database.password=cHJlZGF0b3I=,database.password=cHJlZGF0b3I=
+$ helm install my-release zooz/predator --set database.type=MYSQL,database.name=predator,database.address=mysql.default,database.password=cHJlZGF0b3I=,database.password=cHJlZGF0b3I=
 ```
 > **Note**:
 >
@@ -60,7 +52,7 @@ The following tables lists the configurable parameters of the Predator chart and
 | Parameter            | Description                                                      | Default                                      |
 | -------------------- | ---------------------------------------------------------------- | -------------------------------------------- |
 | `image.repository`   | container image                                                  | `zooz/predator                        `      |
-| `image.tag`          | container image tag                                              | `Latest`                                     |
+| `image.tag`          | container image tag                                              | `1.3`                                     |
 | `image.pullPolicy`   | Operator container image pull policy                             | `Always`                                     |
 | `nameOverride`       | Override the app name                                            |                                              |
 | `fullnameOverride`   | Override the app full name                                       |                                              |
