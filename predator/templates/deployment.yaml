@@ -20,7 +20,15 @@ spec:
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: "{{ .Release.Name }}"
         heritage: "{{ .Release.Service }}"
+        {{- with .Values.podAnnotations }}
+      annotations:
+        {{ toYaml . }}
+        {{- end }}
     spec:
+      {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{ toYaml . }}
+      {{- end }}
       volumes:
         - name: sqlite
       {{- if .Values.persistence.enabled }}
@@ -75,12 +83,14 @@ spec:
             value: {{ .Release.Namespace }}
           - name: INTERNAL_ADDRESS
             value: http://{{ include "predator.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/{{ .Values.apiVersion }}
+          - name: PORT
+            value: {{ .Values.port | quote }}
           volumeMounts:
             - name: sqlite
               mountPath: /db
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
