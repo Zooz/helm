@@ -1,5 +1,9 @@
 replicaCount: 1
 
+port: 80
+
+podAnnotations: {}
+imagePullSecrets: {}
 image:
   repository: zooz/predator
   tag: 1.3

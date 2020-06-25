@@ -79,3 +79,6 @@ The following tables lists the configurable parameters of the Predator chart and
 | `persistence.existingClaim`               | Use an existing PVC to persist data           | `nil`                                                   |
 | `persistence.storageClassName`            | Name of StorageClass resource               | `nil`                                                   |
 | `persistence.accessModes`                 | Persistence access modes                      | `[ReadWriteOnce]`                                       |
+| `podAnnotations`     | annotations for pod                                     | {}                                   |
+| `image.pullSecrets`     | specifies that Kubernetes should get the credentials from a Secret  | `[]`                                      |
+| `port`                 | Port where service is exposed   | 80                                      |
