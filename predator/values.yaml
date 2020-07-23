@@ -6,7 +6,7 @@ podAnnotations: {}
 imagePullSecrets: {}
 image:
   repository: zooz/predator
-  tag: 1.3
+  tag: 1.4
   pullPolicy: Always
 
 nameOverride: ""
