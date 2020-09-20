@@ -6,7 +6,7 @@ podAnnotations: {}
 imagePullSecrets: {}
 image:
   repository: zooz/predator
-  tag: 1.4
+  tag: 1.5
   pullPolicy: Always
 
 nameOverride: ""
@@ -56,3 +56,10 @@ internalAddress:
 kubernetesUrl: https://kubernetes.default.svc
 jobPlatform: KUBERNETES
 apiVersion: v1
+delayRunnerMs: 0
+runnerDockerImage: zooz/predator-runner:1.5
+runnerCpu: 1
+runnerMemory: 256
+intervalCleanupFinishedContainers: 0
+customRunnerDefinition:
+allowInsecureTls: true

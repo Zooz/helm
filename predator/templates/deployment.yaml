@@ -42,6 +42,9 @@ spec:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+          - configMapRef:
+              name: {{ include "predator.fullname" . }}
           env:
   {{if ne .Values.database.type "SQLITE"}}
           - name: "DATABASE_USERNAME"
@@ -55,36 +58,6 @@ spec:
                 key:  DATABASE_PASSWORD
                 name: {{ .Release.Name }}
   {{end}}
-          - name: DATABASE_TYPE
-            value: {{ .Values.database.type }}
-          - name: DATABASE_NAME
-            value: {{ .Values.database.name }}
-          - name: DATABASE_ADDRESS
-            value: {{ .Values.database.address }}
-  {{if eq .Values.database.type "CASSANDRA"}}
-          - name: CASSANDRA_REPLICATION_FACTOR
-            value: {{ .Values.database.cassandra.replicationFactor | quote }}
-          - name: CASSANDRA_CONSISTENCY
-            value: {{ .Values.database.cassandra.consistency }}
-          - name: CASSANDRA_KEY_SPACE_STRATEGY
-            value: {{ .Values.database.cassandra.keySpaceStrategy }}
-          - name: CASSANDRA_LOCAL_DATA_CENTER
-            value: {{ .Values.database.cassandra.localDataCenter }}
-  {{end}}
-  {{if eq .Values.database.type "SQLITE"}}
-          - name: SQLITE_STORAGE
-            value: {{ .Values.database.sqlite.storage }}
-  {{end}}
-          - name: JOB_PLATFORM
-            value: {{ .Values.jobPlatform }}
-          - name: KUBERNETES_URL
-            value: {{ .Values.kubernetesUrl }}
-          - name: KUBERNETES_NAMESPACE
-            value: {{ .Release.Namespace }}
-          - name: INTERNAL_ADDRESS
-            value: http://{{ include "predator.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/{{ .Values.apiVersion }}
-          - name: PORT
-            value: {{ .Values.port | quote }}
           volumeMounts:
             - name: sqlite
               mountPath: /db
