@@ -86,3 +86,6 @@ The following tables lists the configurable parameters of the Predator chart and
 | `intervalCleanupFinishedContainers` | search and delete finished tests containers interval (ms)   | 0                                      |
 | `customRunnerDefinition`            | custom json that will be merged with the kubernetes predator runner job definition   | `nil`              |
 | `allowInsecureTls`                  | If true, don't fail requests on unverified server certificate errors   | true                                      |
+| `serviceAccount.create`             | If true, create service account  | true                                      |
+| `serviceAccount.name`               | Override the service account name  | `nil`                                   |
+| `rbac.create`                       | Weather to create & use RBAC resources or not | true                         |

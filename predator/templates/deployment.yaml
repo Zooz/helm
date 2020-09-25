@@ -37,7 +37,7 @@ spec:
       {{- else }}
           emptyDir: {}
       {{ end }}
-      serviceAccountName: {{ include "predator.fullname" . }}
+      serviceAccountName: {{ template "predator.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
