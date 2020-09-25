@@ -64,6 +64,6 @@ intervalCleanupFinishedContainers: 0
 customRunnerDefinition:
 allowInsecureTls: true
 serviceAccount:
-  create: false
+  create: true
 rbac:
-  create: false
+  create: true
