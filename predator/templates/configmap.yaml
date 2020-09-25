@@ -10,10 +10,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   DATABASE_TYPE: {{ .Values.database.type }}
-{{if .Values.database.name}}
+{{if ne .Values.database.type "SQLITE"}}
   DATABASE_NAME: {{ .Values.database.name }}
-{{end}}
-{{if .Values.database.address}}
   DATABASE_ADDRESS: {{ .Values.database.address }}
 {{end}}
 {{if eq .Values.database.type "SQLITE"}}
