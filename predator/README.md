@@ -20,7 +20,7 @@ The command deploys predator on the Kubernetes cluster with the default configur
 To uninstall/delete the my-release deployment:
 
 ```console
-$ helm delete --purge my-release
+$ helm uninstall my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
