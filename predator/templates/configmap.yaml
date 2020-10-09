@@ -31,3 +31,4 @@ data:
   CUSTOM_RUNNER_DEFINITION: {{ .Values.customRunnerDefinition | toPrettyJson }}
 {{ end }}
   ALLOW_INSECURE_TLS: {{ .Values.allowInsecureTls | quote }}
+  SKIP_INTERNAL_ADDRESS_CHECK: {{ .Values.skipInternalAddressCheck | quote }}

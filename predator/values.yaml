@@ -63,6 +63,7 @@ runnerMemory: 256
 intervalCleanupFinishedContainers: 0
 customRunnerDefinition:
 allowInsecureTls: true
+skipInternalAddressCheck: true
 serviceAccount:
   create: true
 rbac:
