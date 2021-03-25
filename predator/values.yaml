@@ -73,6 +73,7 @@ rbac:
 streaming:
   platform:
   platformHealthCheckTimeoutMs: 2000
+  excludedAttributes:
   kafka:
     brokers:
     clientId: predator
