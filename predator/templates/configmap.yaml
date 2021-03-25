@@ -32,3 +32,17 @@ data:
 {{ end }}
   ALLOW_INSECURE_TLS: {{ .Values.allowInsecureTls | quote }}
   SKIP_INTERNAL_ADDRESS_CHECK: {{ .Values.skipInternalAddressCheck | quote }}
+{{ if .Values.streaming.platform }}
+  STREAMING_PLATFORM: {{ .Values.streaming.platform }}
+  STREAMING_PLATFORM_HEALTH_CHECK_TIMEOUT_MS: {{ .Values.streaming.platformHealthCheckTimeoutMs | quote }}
+{{ end }}
+{{ if .Values.streaming.excludedAttributes }}
+STREAMING_EXCLUDED_ATTRIBUTES: {{ .Values.streaming.excludedAttributes }}
+{{ end }}
+{{ if .Values.streaming.kafka.brokers }}
+  KAFKA_BROKERS: {{ .Values.streaming.kafka.brokers }}
+  KAFKA_CLIENT_ID: {{ .Values.streaming.kafka.clientId }}
+  KAFKA_TOPIC: {{ .Values.kafka.topic }}
+  KAFKA_ALLOW_AUTO_TOPIC_CREATION: {{ .Values.kafka.autoTopicCreation | quote }}
+  KAFKA_ADMIN_RETRIES: {{ .Values.kafka.adminRetries | quote }}
+{{ end }}
