@@ -1,7 +1,7 @@
 apiVersion: "v1"
 description: Predator is an open-source distributed performance testing platform
 name: predator
-version: 1.6.0
+version: 1.6.1
 appVersion: "1.6"
 icon: https://zooz.github.io/predator/logo.png
 home: https://zooz.github.io/predator
