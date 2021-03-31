@@ -42,7 +42,7 @@ STREAMING_EXCLUDED_ATTRIBUTES: {{ .Values.streaming.excludedAttributes }}
 {{ if .Values.streaming.kafka.brokers }}
   KAFKA_BROKERS: {{ .Values.streaming.kafka.brokers }}
   KAFKA_CLIENT_ID: {{ .Values.streaming.kafka.clientId }}
-  KAFKA_TOPIC: {{ .Values.kafka.topic }}
-  KAFKA_ALLOW_AUTO_TOPIC_CREATION: {{ .Values.kafka.autoTopicCreation | quote }}
-  KAFKA_ADMIN_RETRIES: {{ .Values.kafka.adminRetries | quote }}
+  KAFKA_TOPIC: {{ .Values.streaming.kafka.topic }}
+  KAFKA_ALLOW_AUTO_TOPIC_CREATION: {{ .Values.streaming.kafka.autoTopicCreation | quote }}
+  KAFKA_ADMIN_RETRIES: {{ .Values.streaming.kafka.adminRetries | quote }}
 {{ end }}
