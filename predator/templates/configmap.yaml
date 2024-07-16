@@ -49,3 +49,6 @@ data:
   KAFKA_ALLOW_AUTO_TOPIC_CREATION: {{ .Values.streaming.kafka.autoTopicCreation | quote }}
   KAFKA_ADMIN_RETRIES: {{ .Values.streaming.kafka.adminRetries | quote }}
 {{ end }}
+{{ if .Values.chaosMesh.enabled }}
+  CHAOS_MESH_ENABLED: {{ .Values.chaosMesh.enabled }}
+{{ end }}
