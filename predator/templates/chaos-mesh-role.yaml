@@ -1,0 +1,19 @@
+{{- if .Values.chaosMesh.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    app: {{ template "predator.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  name: {{ include "predator.fullname" . }}-chaos-mesh
+  namespace: {{ .Release.Namespace }}
+rules:
+  - verbs: ["list", "get", "watch"]
+    apiGroups: ["apiextensions.k8s.io"]
+    resources: ["customresourcedefinitions"]
+  - verbs: ["get", "list", "watch", "create", "delete", "deletecollection", "patch", "update"]
+    apiGroups: ["chaos-mesh.org"]
+    resources: ["*"]
+{{- end }}
