@@ -1,6 +1,6 @@
 {{- if .Values.chaosMesh.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   labels:
     app: {{ template "predator.fullname" . }}
