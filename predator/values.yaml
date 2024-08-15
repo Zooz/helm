@@ -80,3 +80,6 @@ streaming:
     topic:
     autoTopicCreation: false
     adminRetries: 2
+
+chaosMesh:
+  enabled: false
