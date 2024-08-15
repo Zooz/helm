@@ -57,17 +57,17 @@ The following tables lists the configurable parameters of the Predator chart, an
 | `nameOverride`                           | Override the app name                                                                     |                                |
 | `fullnameOverride`                       | Override the app full name                                                                |                                |
 | `resources`                              | Set the resource to be allocated and allowed for the Pods                                 | `{}`                           |
-| `ingress.enabled`                        | If true, an ingress is be created                                                         | `false`                        
-| `ingress.annotations`                    | Annotations for the ingress                                                               | `{}`                           
-| `ingress.path`                           | Path for backend                                                                          | `/`                            
-| `ingress.hosts`                          | A list of hosts for the ingresss                                                          | `['predator.local']`           
-| `ingress.tls`                            | Ingress TLS configuration                                                                 | `[]`                           
+| `ingress.enabled`                        | If true, an ingress is be created                                                         | `false`                        |
+| `ingress.annotations`                    | Annotations for the ingress                                                               | `{}`                           |
+| `ingress.path`                           | Path for backend                                                                          | `/`                            |
+| `ingress.hosts`                          | A list of hosts for the ingresss                                                          | `['predator.local']`           |
+| `ingress.tls`                            | Ingress TLS configuration                                                                 | `[]`                           |
 | `nodeSelector`                           | Node labels for pod assignment                                                            | `{}`                           |
 | `tolerations`                            | Tolerations for pod assignment                                                            | `[]`                           |
 | `affinity`                               | Affinity settings for pod assignment                                                      | `{}`                           |
-| `service.type`                           | type of controller service to create                                                      | `ClusterIP`                    
-| `database.type`                          | chosen storage backend, Optional Values: SQLITE, CASSANDRA, MYSQL, POSTGRES AND SQLSERVER | `SQLITE`                       
-| `datbase.name`                           | the name of the database/keyspace with the selected database type                         |
+| `service.type`                           | type of controller service to create                                                      | `ClusterIP`                    |
+| `database.type`                          | chosen storage backend, Optional Values: SQLITE, CASSANDRA, MYSQL, POSTGRES AND SQLSERVER | `SQLITE`                       |
+| `datbase.name`                           | the name of the database/keyspace with the selected database type                         |                                |
 | `database.username`                      | Database username (in base64)                                                             |                                |
 | `database.password`                      | Database password (in base64)                                                             |                                |
 | `kubernetesUrl    `                      | URL of kubernetes, Predator should be able to communicate with this url.                  | https://kubernetes.default.svc |
@@ -97,4 +97,4 @@ The following tables lists the configurable parameters of the Predator chart, an
 | `streaming.kafka.topic`                  | Topic name	                                                                               |                                |
 | `streaming.kafka.autoTopicCreation`      | Enable kafka client to auto create topic if it does not exist	                            | false                          |
 | `streaming.kafka.adminRetries`           | Admin client retries	                                                                     | 2                              |
-| `chaosMesh.enabled`                      | If true, an chaos reasources will be created, and kubernetes chaos mesh will be used.	    | `false`                            |
+| `chaosMesh.enabled`                      | If true, chaos resources will be created, and kubernetes chaos mesh will be used.	       | `false`                        |
