@@ -3,9 +3,9 @@ entries:
   predator:
   - apiVersion: v1
     appVersion: "1.7"
-    created: "2024-07-21T18:20:46.177378+03:00"
+    created: "2024-08-25T13:00:36.133561+03:00"
     description: Predator is an open-source distributed performance testing platform
-    digest: 7f33ec9f443f7a1bb2757b7872088fe6a1087820a8b8cc72def7ddfa42165eb1
+    digest: b73453989485f3d87cd93fe1b1c01a126c92b10467435cebb9b3c7ecfb7483fb
     home: https://zooz.github.io/predator
     icon: https://zooz.github.io/predator/logo.png
     keywords:
@@ -25,7 +25,7 @@ entries:
     - predator-1.7.0.tgz
     version: 1.7.0
   - apiVersion: v1
-    appVersion: "1.7"
+    appVersion: "1.6"
     created: "2024-07-21T18:20:46.176732+03:00"
     description: Predator is an open-source distributed performance testing platform
     digest: c2825f5f13a08adc82fa6f5086415da5241d5695e71b44ac53ed4ca965b15c14
